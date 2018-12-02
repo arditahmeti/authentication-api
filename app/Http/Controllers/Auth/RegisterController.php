@@ -61,6 +61,44 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+    /**
+     * @OA\Get(
+     *     path="/pet/{petId}",
+     *     tags={"pet"},
+     *     summary="Find pet by ID",
+     *     description="Returns a single pet",
+     *     operationId="getPetById",
+     *     @OA\Parameter(
+     *         name="petId",
+     *         in="path",
+     *         description="ID of pet to return",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/Pet"),
+     *         @OA\XmlContent(ref="#/components/schemas/Pet"),
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid ID supplier"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Pet not found"
+     *     ),
+     *     security={
+     *         {"api_key": {}}
+     *     }
+     * )
+     *
+     * @param int $id
+     */
     protected function create(array $data)
     {
         return User::create([
