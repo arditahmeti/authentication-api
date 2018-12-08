@@ -1,7 +1,7 @@
 <?php
 /**
  * @SWG\Swagger(
- *     basePath="/api",
+ *     basePath="",
  *     schemes={"http", "https"},
  *     host=L5_SWAGGER_CONST_HOST,
  *     @SWG\Info(
@@ -24,61 +24,98 @@
  * )
  */
 /**
- * @SWG\Get(
- *      path="/projects",
- *      operationId="getProjectsList",
- *      tags={"Projects"},
- *      summary="Get list of projects",
- *      description="Returns list of projects",
- *      @SWG\Response(
- *          response=200,
- *          description="successful operation"
- *       ),
- *       @SWG\Response(response=400, description="Bad request"),
- *       security={
- *           {"api_key_security_example": {}}
- *       }
- *     )
- *
- * Returns list of projects
- */
-/**
- * @SWG\Get(
- *      path="/projects/{id}",
- *      operationId="getProjectById",
- *      tags={"Projects"},
- *      summary="Get project information",
- *      description="Returns project data",
+ * @SWG\Post(
+ *     path="/api/register",
+ *     tags={"Authentication"},
+ *     description="Register",
+ *    @SWG\Parameter(
+ *         name="email",
+ *         in="query",
+ *         type="string",
+ *         description="Your email address",
+ *         default="admin@gmail.com",
+ *         required=true,
+ *     ),
  *      @SWG\Parameter(
- *          name="id",
- *          description="Project id",
- *          required=true,
- *          type="integer",
- *          in="path"
- *      ),
- *      @SWG\Response(
- *          response=200,
- *          description="successful operation"
- *       ),
- *      @SWG\Response(response=400, description="Bad request"),
- *      @SWG\Response(response=404, description="Resource Not Found"),
- *      security={
- *         {
- *             "oauth2_security_example": {"write:projects", "read:projects"}
- *         }
- *     },
+ *         name="first_name",
+ *         in="query",
+ *         type="string",
+ *         description="Your first name",
+ *         default="John",
+ *         required=true,
+ *     ),
+ *    @SWG\Parameter(
+ *         name="last_name",
+ *         in="query",
+ *         type="string",
+ *         description="Your last name",
+ *         default="Doe",
+ *         required=true,
+ *     ),
+ *   @SWG\Parameter(
+ *         name="password",
+ *         in="query",
+ *         type="string",
+ *         description="Your password",
+ *         required=true,
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="OK",
+ *     ),
+ *     @SWG\Response(
+ *         response=422,
+ *         description="Missing Data"
+ *     )
  * )
  *
  */
+
 /**
- * @SWG\Get(
- *     path="/test",
- *     tags={"Test"},
- *     description="Get all test",
- *     security={
- *     {"passport": {}},
- *   },
- *
+ * @SWG\Post(
+ *     path="/oauth/token",
+ *     tags={"Authentication"},
+ *     description="Register",
+ *     consumes={"application/x-www-form-urlencoded"},
+ *    @SWG\Parameter(
+ *         name="grant_type",
+ *         in="formData",
+ *         type="string",
+ *         default="password",
+ *         description="Grant Type",
+ *         required=true,
+ *     ),
+ *     @SWG\Parameter(
+ *         name="client_id",
+ *         in="formData",
+ *         type="string",
+ *         description="Client ID",
+ *         default="1",
+ *         required=true,
+ *     ),
+ *      @SWG\Parameter(
+ *         name="client_secret",
+ *         in="formData",
+ *         type="string",
+ *         description="Client Secret",
+ *         default="test",
+ *         required=true,
+ *     ),
+ *    @SWG\Parameter(
+ *         name="username",
+ *         in="formData",
+ *         type="string",
+ *         description="Your email address",
+ *         default="admin@gmail.com",
+ *         required=true,
+ *     ),
+ *   @SWG\Parameter(
+ *         name="password",
+ *         in="formData",
+ *         type="string",
+ *         description="Your password",
+ *         required=true,
+ *     ),
  *     @SWG\Response(
  *         response=200,
  *         description="OK",

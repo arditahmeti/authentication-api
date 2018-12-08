@@ -9,79 +9,51 @@
         "version": "1.0.0"
     },
     "host": "localhost:8000",
-    "basePath": "/api",
+    "basePath": "",
     "schemes": [
         "http",
         "https"
     ],
     "paths": {
-        "/projects": {
-            "get": {
+        "/api/register": {
+            "post": {
                 "tags": [
-                    "Projects"
+                    "Authentication"
                 ],
-                "summary": "Get list of projects",
-                "description": "Returns list of projects",
-                "operationId": "getProjectsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "api_key_security_example": []
-                    }
-                ]
-            }
-        },
-        "/projects/{id}": {
-            "get": {
-                "tags": [
-                    "Projects"
-                ],
-                "summary": "Get project information",
-                "description": "Returns project data",
-                "operationId": "getProjectById",
+                "description": "Register",
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Project id",
+                        "name": "email",
+                        "in": "query",
+                        "description": "Your email address",
                         "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
+                        "type": "string",
+                        "default": "admin@gmail.com"
                     },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                },
-                "security": [
                     {
-                        "oauth2_security_example": [
-                            "write:projects",
-                            "read:projects"
-                        ]
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "Your first name",
+                        "required": true,
+                        "type": "string",
+                        "default": "John"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "Your last name",
+                        "required": true,
+                        "type": "string",
+                        "default": "Doe"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Your password",
+                        "required": true,
+                        "type": "string"
                     }
-                ]
-            }
-        },
-        "/test": {
-            "get": {
-                "tags": [
-                    "Test"
                 ],
-                "description": "Get all test",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -89,12 +61,67 @@
                     "422": {
                         "description": "Missing Data"
                     }
-                },
-                "security": [
+                }
+            }
+        },
+        "/oauth/token": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "description": "Register",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
                     {
-                        "passport": []
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "Grant Type",
+                        "required": true,
+                        "type": "string",
+                        "default": "password"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "Client ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "1"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "Client Secret",
+                        "required": true,
+                        "type": "string",
+                        "default": "test"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "Your email address",
+                        "required": true,
+                        "type": "string",
+                        "default": "admin@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "Your password",
+                        "required": true,
+                        "type": "string"
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                }
             }
         }
     },
