@@ -1,10 +1,10 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "L5 Swagger API",
-        "description": "L5 Swagger API description",
+        "title": "Authentication  API",
+        "description": "L5 Swagger Authentication API description",
         "contact": {
-            "email": "darius@matulionis.lt"
+            "email": "arditdev@gmail.com"
         },
         "version": "1.0.0"
     },
@@ -20,7 +20,7 @@
                 "tags": [
                     "Authentication"
                 ],
-                "description": "Register",
+                "description": "Register to the authentication api",
                 "parameters": [
                     {
                         "name": "email",
@@ -69,7 +69,7 @@
                 "tags": [
                     "Authentication"
                 ],
-                "description": "Register",
+                "description": "Login using your credentials in order to receive the access and refresh token",
                 "consumes": [
                     "application/x-www-form-urlencoded"
                 ],

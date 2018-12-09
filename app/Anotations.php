@@ -6,10 +6,10 @@
  *     host=L5_SWAGGER_CONST_HOST,
  *     @SWG\Info(
  *         version="1.0.0",
- *         title="L5 Swagger API",
- *         description="L5 Swagger API description",
+ *         title="Authentication  API",
+ *         description="L5 Swagger Authentication API description",
  *         @SWG\Contact(
- *             email="darius@matulionis.lt"
+ *             email="arditdev@gmail.com"
  *         ),
  *     )
  * )
@@ -27,7 +27,7 @@
  * @SWG\Post(
  *     path="/api/register",
  *     tags={"Authentication"},
- *     description="Register",
+ *     description="Register to the authentication api",
  *    @SWG\Parameter(
  *         name="email",
  *         in="query",
@@ -75,7 +75,7 @@
  * @SWG\Post(
  *     path="/oauth/token",
  *     tags={"Authentication"},
- *     description="Register",
+ *     description="Login using your credentials in order to receive the access and refresh token",
  *     consumes={"application/x-www-form-urlencoded"},
  *    @SWG\Parameter(
  *         name="grant_type",
