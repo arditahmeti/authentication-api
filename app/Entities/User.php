@@ -31,11 +31,11 @@ class User extends Authenticatable
 
     public function followers()
     {
-        return $this->hasMany('App\Entities\Follower','receiver_id');
+        return $this->belongsToMany('App\Entities\User', 'followers','receiver_id','sender_id');
     }
 
     public function followings()
     {
-        return $this->hasMany('App\Entities\Follower','sender_id');
+        return $this->belongsToMany('App\Entities\User', 'followers','sender_id','receiver_id');
     }
 }
