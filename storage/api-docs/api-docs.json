@@ -9,12 +9,43 @@
         "version": "1.0.0"
     },
     "host": "localhost:8000",
-    "basePath": "",
+    "basePath": "/api",
     "schemes": [
         "http",
         "https"
     ],
     "paths": {
+        "/user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Get a specific user",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "integer",
+                        "default": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Missing Data"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
         "/api/register": {
             "post": {
                 "tags": [

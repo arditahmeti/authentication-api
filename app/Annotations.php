@@ -1,7 +1,7 @@
 <?php
 /**
  * @SWG\Swagger(
- *     basePath="",
+ *     basePath="/api",
  *     schemes={"http", "https"},
  *     host=L5_SWAGGER_CONST_HOST,
  *     @SWG\Info(
