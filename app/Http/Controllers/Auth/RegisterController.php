@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\RegisterValidation;
-use App\User;
+use App\Http\Services\Interfaces\IRegisterService;
+use App\Entities\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,23 +27,23 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/home', $registerService;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param IRegisterService $registerService
      */
-    public function __construct()
+    public function __construct(IRegisterService $registerService)
     {
         $this->middleware('guest');
+        $this->registerService = $registerService;
     }
 
     public function store(RegisterValidation $request)
     {
         $user = new User($request->all());
-        $user->password = bcrypt($request->password);
-        $user->save();
-        return $user;
+        $user->profile_picture = $request->file('profile_picture');
+        return $this->registerService->insert($user);
     }
 }

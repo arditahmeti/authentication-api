@@ -23,14 +23,6 @@
                 "description": "Register to the authentication api",
                 "parameters": [
                     {
-                        "name": "email",
-                        "in": "query",
-                        "description": "Your email address",
-                        "required": true,
-                        "type": "string",
-                        "default": "admin@gmail.com"
-                    },
-                    {
                         "name": "first_name",
                         "in": "query",
                         "description": "Your first name",
@@ -47,11 +39,42 @@
                         "default": "Doe"
                     },
                     {
+                        "name": "age",
+                        "in": "query",
+                        "description": "Your age",
+                        "required": true,
+                        "type": "integer",
+                        "default": "19"
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "A brief description of your profile",
+                        "required": true,
+                        "type": "string",
+                        "default": "I am an animal lover"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Your email address",
+                        "required": true,
+                        "type": "string",
+                        "default": "admin@gmail.com"
+                    },
+                    {
                         "name": "password",
                         "in": "query",
                         "description": "Your password",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "profile_picture",
+                        "in": "formData",
+                        "description": "Select file",
+                        "required": true,
+                        "type": "file"
                     }
                 ],
                 "responses": {

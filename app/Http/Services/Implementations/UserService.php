@@ -27,7 +27,16 @@ class UserService implements IUserService
 
     public function insert(User $user)
     {
-        //TODO
+        $value = $user->profile_picture;
+        $extension = $value->getClientOriginalExtension();
+        $fileName = $value->getClientOriginalName();
+        $fileSize = $value->getClientSize();
+        $contentType = substr($value->getMimeType(), 0, 5);
+        $encryptedFileName = uniqid() . '.'. $extension;
+        $url = storage_path('app\public\upload\\' .$encryptedFileName);
+        $value->storeAs('public\upload', $encryptedFileName);
+        $user->profile_picture = $url;
+        return $this->userRepository->insert($user);
     }
 
     public function update(User $user)
